@@ -3,7 +3,7 @@ import requests
 import bs4
 import tkinter as tk
 
-# Request Function
+# Request Function # Collecting Data from Web
 def get_html_data(url):
     data = requests.get(url)
     return data
@@ -23,7 +23,7 @@ def get_covid_data():
 
 get_covid_data()
 
-# Extracting country data from webpage
+# Extracting country data from webpage # Adding Functionality to GUI
 def get_country_data():
     name = textfield.get()
     url = "https://www.worldometers.info/coronavirus/country/" + name
@@ -40,36 +40,36 @@ def get_country_data():
             print("This block does not required")
     mainlabel['text'] = all_data
 
-# Reload Function
+# Reload Function # Adding Functionality to GUI
 def reload():
     new_data = get_covid_data()
     mainlabel['text'] = new_data
 
 
-# GUI
+# GUI # Creating GUI
 root = tk.Tk()
 root.geometry("900x700")
 root.title("Covid Tracker")
 f = ("popins", 25, "bold")
 
-# Covid Logo
+# Covid Logo # Creating GUI
 banner = tk.PhotoImage(file="download.png")
 bannerlabel = tk.Label(root, image=banner)
 bannerlabel.pack()
 
-# Taking country name input
+# Taking country name input # Adding Functionality to GUI
 textfield = tk.Entry(root, width=50)
 textfield.pack()
 
-# Display data on GUI
+# Display data on GUI # Adding Functionality to GUI
 mainlabel = tk.Label(root, text=get_covid_data(), font=f)
 mainlabel.pack()
 
-# Get Data Button
+# Get Data Button # Adding Functionality to GUI
 gbtn = tk.Button(root, text="Get Data", font=f, relief="solid", command=get_country_data)
 gbtn.pack()
 
-# Reload button
+# Reload button # Adding Functionality to GUI
 rbtn = tk.Button(root, text="Reload", font=f, relief="solid", command=reload)
 rbtn.pack()
 
